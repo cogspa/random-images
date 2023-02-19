@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Image Grid</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #333;
+			background-image: url('background.jpg');
+			background-size: cover;
+		}
+
+		.container {
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-auto-rows: 60%;
+			grid-gap: 10px;
+			padding: 10px;
+			background-color: transparent;
+		}
+
+		.image {
+			width: 100%;
+			height: 100%;
+			opacity: 0.5;
+			transition: all 0.5s ease-in-out;
+		}
+
+		.image:hover {
+			transform: rotate(360deg);
+			opacity: 1;
+		}
+
+		p {
+			color: #fff;
+			font-size: 12px;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- Use JavaScript to generate a grid of random images -->
+		<script>
+			function updateImages() {
+				let images = document.querySelectorAll('.image');
+				images.forEach(image => {
+					image.src = `https://source.unsplash.com/random/200x200?sig=${Math.floor(Math.random() * 1000)}`;
+					image.style.opacity = Math.random() * 0.8 + 0.2;
+
+					let url = image.nextElementSibling;
+					url.textContent = image.src;
+				});
+			}
+
+			for (let i = 0; i < 60; i++) {
+				let image = new Image();
+				image.src = `https://source.unsplash.com/random/200x200?sig=${Math.floor(Math.random() * 1000)}`;
+				image.style.opacity = Math.random() * 0.8 + 0.2;
+				image.className = 'image';
+				document.body.appendChild(image);
+
+				let url = document.createElement('p');
+				url.textContent = image.src;
+				document.body.appendChild(url);
+			}
+
+			setInterval(updateImages, 400);
+		</script>
+	</div>
+</body>
+</html>
