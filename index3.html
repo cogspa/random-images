@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Color Grid</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			display: grid;
+			grid-template-columns: repeat(10, 1fr);
+			grid-template-rows: repeat(10, 1fr);
+			height: 2000px;
+			background-color: rgb(229, 86, 86);
+		}
+
+		.color {
+			background-color: rgb(255, 255, 255);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- Use JavaScript to generate a grid of random colors -->
+		<script>
+			function updateColors() {
+				let colors = document.querySelectorAll('.color');
+				colors.forEach(color => {
+					color.style.backgroundColor = getRandomColor();
+				});
+			}
+
+			function getRandomColor() {
+				let r = Math.floor(Math.random() * 256);
+				let g = Math.floor(Math.random() * 256);
+				let b = Math.floor(Math.random() * 256);
+				return `rgb(${r}, ${g}, ${b})`;
+			}
+
+			for (let i = 0; i < 100; i++) {
+				let color = document.createElement('div');
+				color.className = 'color';
+				document.body.appendChild(color);
+			}
+
+			setInterval(updateColors, 400);
+		</script>
+	</div>
+</body>
+</html>

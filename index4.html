@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grid Layout Example</title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+        grid-gap: 10px;
+      }
+
+      .grid-item {
+        background-color: white;
+        height: 200px;
+      }
+
+      .item1 {
+        background-color: red;
+      }
+
+      .item2 {
+        background-color: blue;
+      }
+
+      .item3 {
+        background-color: green;
+      }
+
+      .item4 {
+        background-color: yellow;
+      }
+
+      .item5 {
+        background-color: orange;
+      }
+
+      .item6 {
+        background-color: purple;
+      }
+
+      .item7 {
+        background-color: pink;
+      }
+
+      .item8 {
+        background-color: gray;
+      }
+
+      .item9 {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item item1"></div>
+      <div class="grid-item item2"></div>
+      <div class="grid-item item3"></div>
+      <div class="grid-item item4"></div>
+      <div class="grid-item item5"></div>
+      <div class="grid-item item6"></div>
+      <div class="grid-item item7"></div>
+      <div class="grid-item item8"></div>
+      <div class="grid-item item9"></div>
+    </div>
+    <script>
+      function changeColors() {
+        const items = document.querySelectorAll('.grid-item');
+        items.forEach(function(item) {
+          const randomColor = Math.floor(Math.random()*16777215).toString(16);
+          item.style.backgroundColor = "#" + randomColor;
+        });
+      }
+      setInterval(changeColors, 2000);
+    </script>
+  </body>
+</html>
