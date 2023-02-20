@@ -13,42 +13,8 @@
       .grid-item {
         background-color: white;
         height: 200px;
-      }
-
-      .item1 {
-        background-color: red;
-      }
-
-      .item2 {
-        background-color: blue;
-      }
-
-      .item3 {
-        background-color: green;
-      }
-
-      .item4 {
-        background-color: yellow;
-      }
-
-      .item5 {
-        background-color: orange;
-      }
-
-      .item6 {
-        background-color: purple;
-      }
-
-      .item7 {
-        background-color: pink;
-      }
-
-      .item8 {
-        background-color: gray;
-      }
-
-      .item9 {
-        background-color: black;
+        background-size: cover;
+        background-position: center;
       }
     </style>
   </head>
@@ -65,14 +31,16 @@
       <div class="grid-item item9"></div>
     </div>
     <script>
-      function changeColors() {
+      function changeImages() {
         const items = document.querySelectorAll('.grid-item');
+        const baseUrl = 'https://source.unsplash.com/random';
         items.forEach(function(item) {
-          const randomColor = Math.floor(Math.random()*16777215).toString(16);
-          item.style.backgroundColor = "#" + randomColor;
+          const imageUrl = `${baseUrl}/${item.offsetWidth}x${item.offsetHeight}`;
+          item.style.backgroundImage = `url(${imageUrl})`;
         });
       }
-      setInterval(changeColors, 2000);
+      changeImages();
     </script>
   </body>
 </html>
+
